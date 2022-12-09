@@ -1,0 +1,88 @@
+﻿@model Dept_Labour_Immi.Models.Agency
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>ပြင်ဆင်ခြင်း</h2>
+
+<h4>Agency</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="AgencyName" class="control-label"></label>
+                <input asp-for="AgencyName" class="form-control" />
+                <span asp-validation-for="AgencyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegNo" class="control-label"></label>
+                <input asp-for="RegNo" class="form-control" />
+                <span asp-validation-for="RegNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseStartDate" class="control-label"></label>
+                <input asp-for="LicenseStartDate" class="form-control" />
+                <span asp-validation-for="LicenseStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseEndDate" class="control-label"></label>
+                <input asp-for="LicenseEndDate" class="form-control" />
+                <span asp-validation-for="LicenseEndDate" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+            <label asp-for="BOD_Name" class="control-label"></label>
+            <input asp-for="BOD_Name" class="form-control" />
+            <span asp-validation-for="BOD_Name" class="text-danger"></span>
+            </div>*@
+            @* <div class="form-group">
+            <label asp-for="BOD_Name" class="control-label"></label>
+            <select asp-for="BOD_Name" class="form-control" asp-items="ViewBag.BOD_Name">
+            <option selected> - - </option>
+            </select>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="BOD_Name" class="control-label"></label>
+                <select id="DemandLetterId" asp-for="BOD_Name" class="form-control">
+                    <option value="">Please Select</option>
+                    @if (Model.BODList != null && Model.BODList.Count > 0)
+                    {
+                        @foreach (var item in Model.BODList)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="myButton" />
+                <a asp-action="Index" class="myButton">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+<div>
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

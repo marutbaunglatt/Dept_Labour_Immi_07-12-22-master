@@ -1,0 +1,47 @@
+﻿@model Dept_Labour_Immi.Models.InternationalSending
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>အသေးစိတ်</h2>
+<div>
+    <h4>International Sending</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.CountryID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.AgencyID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Agency.AgencyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.NumberOfWorker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.NumberOfWorker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.ServiceThaiWorkerID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.ServiceThaiWorker.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+  @*  <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |*@
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>

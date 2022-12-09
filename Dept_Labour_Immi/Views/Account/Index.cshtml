@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.User>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1 class="text-primary text-center">Users List</h1>
+
+<a class="btn btn-primary text-white float-end" asp-action="Create"><i class="bi bi-plus-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Add New User</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>@Html.DisplayNameFor(model => model.UserId)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int no = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@no</td>
+                <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                <td>
+                    <a class="btn btn-outline-primary me-2 mb-1" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit</a>
+                    <a class="btn btn-outline-success me-2 mb-1" asp-action="Detail" asp-route-id="@item.Id"><i class="bi bi-info-circle"></i>Detail</a>|
+                    <a class="btn btn-outline-danger me-2 mb-1" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill"></i>&nbsp;&nbsp;Delete</a>
+                </td>
+            </tr>
+            no++;
+        }
+    </tbody>
+</table>

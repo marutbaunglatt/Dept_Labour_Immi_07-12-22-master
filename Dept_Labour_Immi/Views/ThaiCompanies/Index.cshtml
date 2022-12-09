@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.ThaiCompany>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Thailand Companies</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+<table class="table" id="Thai_TB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model) {
+                <tr>
+                    <td>@index</td>
+                   @* <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>*@
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ID" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </a>
+                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerCode)
+                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit"></a>
+                    @*|
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                    </td>
+                </tr>
+            index++;
+        }              
+        
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#Thai_TB").DataTable();
+        })
+
+    </script>
+}

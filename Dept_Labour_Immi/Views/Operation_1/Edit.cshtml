@@ -1,0 +1,106 @@
+﻿@model Dept_Labour_Immi.Models.Operation_1
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>ပြင်ဆင်ခြင်း</h2>
+
+<h4>Demand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Apply_Date" class="control-label"></label>
+                <input asp-for="Apply_Date" class="form-control" />
+               @* <span asp-validation-for="Apply_Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Document_Complete_Date" class="control-label"></label>
+                <input asp-for="Document_Complete_Date" class="form-control" />
+              @*  <span asp-validation-for="Document_Complete_Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="AgencyID" class="control-label"></label>
+                <select asp-for="AgencyID" class="form-control" asp-items="ViewBag.AgencyID">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="AgencyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThaiCompanyID" class="control-label"></label>
+                <select asp-for="ThaiCompanyID" class="form-control" asp-items="ViewBag.ThaiCompanyID">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="ThaiCompanyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOEID" class="control-label"></label>
+                <select asp-for="DOEID" id="doeID" class="form-control" asp-items="ViewBag.DOEID">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="DOEID" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="DOEDate" class="control-label"></label>
+                <input asp-for="DOEDate" class="form-control" id="DoeDateFromDOE" readonly />
+                <span asp-validation-for="DOEDate" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="DOEDateFromDOE" class="control-label"></label>
+                <input asp-for="DOEDateFromDOE" class="form-control" id="DoeDateFromDOE" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkType" class="control-label"></label>
+                <input asp-for="WorkType" class="form-control" />
+                <span asp-validation-for="WorkType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaleWorkers" class="control-label"></label>
+                <input asp-for="MaleWorkers" class="form-control" />
+                <span asp-validation-for="MaleWorkers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FemaleWorkers" class="control-label"></label>
+                <input asp-for="FemaleWorkers" class="form-control" />
+                <span asp-validation-for="FemaleWorkers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalWorkers" class="control-label"></label>
+                <input asp-for="TotalWorkers" class="form-control" readonly />
+              @*  <span asp-validation-for="TotalWorkers" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Remark" class="control-label"></label>
+                <input asp-for="Remark" class="form-control" />
+              @*  <span asp-validation-for="Remark" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="myButton" />
+                <a asp-action="Index" class="myButton">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    @* <div class="alert alert-<strong>Error!</strong> danger" style="color:red ; font-weight:bold">
+    @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+     </div>*@
+
+    foreach (var error in ViewData.ModelState["Error"].Errors)
+    {
+        <h5 style="color:red;margin-top:8px;">@error.ErrorMessage</h5>
+    }
+}

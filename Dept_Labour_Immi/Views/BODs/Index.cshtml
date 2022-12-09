@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.BOD>
+@*@model IEnumerable<Dept_Labour_Immi.Models.Agency>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Directors</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+@*@using (Html.BeginForm())
+{
+        <p>
+            Find by Name: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+            Find by Agency: @Html.TextBox("SearchAgency")
+           <input type="submit" value="Search" />
+        </p>
+}*@
+<table class="table" id="BODTB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NRC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ID" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NRC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit"> </a>
+                    @*|
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to List</a>
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#BODTB").DataTable();
+        })
+
+    </script>
+}

@@ -1,0 +1,116 @@
+﻿@using Dept_Labour_Immi.Enum;
+@model Dept_Labour_Immi.Models.BOD
+
+
+@{
+    ViewData["Title"] = "BOD Create";
+}
+
+<h2>အသစ်ထည့်သွင်းခြင်း</h2>
+
+<h4>Directors</h4>
+<hr />
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Position" class="control-label"></label>
+                    <select asp-for="Position" class="form-control">
+                        <option value="">--</option>
+                        <option value="နယ်ကိုယ်စားလှယ်">နယ်ကိုယ်စားလှယ်</option>
+                        <option value="Managing Director">Managing Director</option>
+                        <option value="Director">Director</option>
+                    </select>
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RegionID" class="control-label"></label>
+                    <select asp-for="RegionID" class="form-control" asp-items="Html.GetEnumSelectList<RegionsEnum>()">
+                        <option selected>--</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NRC" class="control-label"></label>
+                    <input asp-for="NRC" class="form-control" id="inp" />
+                    <span asp-validation-for="NRC" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AgencyID" class="control-label"></label>
+                    <select asp-for="AgencyID" class="form-control" asp-items="ViewBag.AgencyID">
+                        <option selected>--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" id="btncreate" class="myButton" />
+                    <a asp-action="Index" class="myButton">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @*<div>
+        <a asp-action="Index" class="myButton">Back to List</a>
+    </div>*@
+
+    @*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+    @*    <script type="text/javascript">
+    @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+    {
+        <text>
+            $(document).ready(function () {
+                alert('@ViewData.ModelState["Error"].Errors.First().ErrorMessage');
+            });
+        </text>
+    }
+</script>*@
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    <div class="alert alert-<strong>Error!</strong> danger" style="color:red ; font-weight:bold">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}
+<script>
+    const inp = document.querySelector("#inp");
+    inp.addEventListener("keyup", function () {
+        inp.value = inp.value.trim();
+
+
+    })
+
+    checkExistsBOD = (nrc) => {
+
+    }
+
+</script>
+
+
+
+@* //   const btn = document.querySelector("#btncreate");
+     //@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+     //{
+     //   btn.disable();
+     //}*@
+
+

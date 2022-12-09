@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.InternationalSending>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>International Sending</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+
+<table class="table" id="Sending_TB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfWorker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceThaiWorkerID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>@index</td>
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ID" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.Country.Name)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Agency.AgencyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfWorker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceThaiWorker.ID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit"></a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to List</a>
+
+<style media="all" type="text/css">
+    #Sending_TB td {
+        padding: 2px 0px 2px 15px;
+        align-items: center;
+    }
+</style>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#Sending_TB").DataTable();
+        })
+
+    </script>
+}

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.DOE>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>DOE စာများ</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+@*@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}*@
+<table class="table" id="DOE_TB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOE_NO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOE_Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                @*  <td>
+            @Html.DisplayFor(modelItem => item.DOE_NO)
+            </td>*@
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ID" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.DOE_NO)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOE_Date)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit"> Edit</a>
+                    @*|
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to List</a>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#DOE_TB").DataTable();
+        })
+
+    </script>
+}

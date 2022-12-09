@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.Country>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Country</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+@*@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}*@
+<table class="table" id="Country_TB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ID" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit">Edit</a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to List</a>
+
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#Country_TB").DataTable();
+        })
+
+    </script>
+}

@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.ThaiSending>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Thai Sending</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+<table id="operTS" class="display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyID)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.ThaiCompanyID)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CountOfThaiCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplyDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractSigningDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OWICDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YangonDepartureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MWDAwaitingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartureFromMWDDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestMaleWorker)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.RequestFemaleWorker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestTotalWorkers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitMaleWorker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitFemaleWorker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermitTotalWorker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InchargePersonFromAgency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.ThaiSendingId" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                    </a>
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.thaiCompany.CompanyName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountOfThaiCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractSigningDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OWICDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YangonDepartureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MWDAwaitingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureFromMWDDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestMaleWorker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestFemaleWorker)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.RequestTotalWorkers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PermitMaleWorker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PermitFemaleWorker)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.PermitTotalWorker)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.InchargePersonFromAgency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ThaiSendingId" class="customButton fa fa-edit"></a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+
+<style media="all" type="text/css">
+    #operTS td {
+        padding: 2px 0px 2px 15px;
+        align-items: center;
+    }
+</style>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#operTS").DataTable({
+                scrollX: true,
+            });
+        })
+    </script>
+}

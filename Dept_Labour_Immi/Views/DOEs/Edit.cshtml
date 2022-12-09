@@ -1,0 +1,54 @@
+﻿@model Dept_Labour_Immi.Models.DOE
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>ပြင်ဆင်ခြင်း</h2>
+
+<h4>DOE စာများ</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DOE_NO" class="control-label"></label>
+                <input asp-for="DOE_NO" class="form-control" id="inp" />
+                <span asp-validation-for="DOE_NO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOE_Date" class="control-label"></label>
+                <input asp-for="DOE_Date" class="form-control" />
+                <span asp-validation-for="DOE_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="myButton" />
+                <a asp-action="Index" class="myButton">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    <div class="alert alert-<strong>Error!</strong> danger" style="color:red ; font-weight:bold">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}
+<script>
+    const inp = document.querySelector("#inp");
+    inp.addEventListener("keyup", function () {
+        inp.value = inp.value.trim();
+
+
+    })
+</script>

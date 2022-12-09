@@ -1,0 +1,194 @@
+﻿@model Dept_Labour_Immi.Models.Agency
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>အသေးစိတ်</h2>
+
+<div>
+    <h4>Agency</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.AgencyName)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.AgencyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.RegNo)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.RegNo)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.LicenseStartDate)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.LicenseStartDate)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.LicenseEndDate)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.LicenseEndDate)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.BOD_Name)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.BODName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |*@
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>
+<br />
+<h2>BOD List</h2>
+<table class="table" id="BODTB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD.NRC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD.agency)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @if (Model.BODList.Count > 0)
+        {
+            @foreach (var item in Model.BODList)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td class="aherf_link">
+                        <a asp-action="Details" asp-route-id="@item.ID">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NRC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+        else{
+            <tr><td colspan="6" style="text-align:center">There is no data.</td></tr>
+        }
+       
+    </tbody>
+</table>
+<br />
+<h2>Penalty List</h2>
+<table class="table" id="PenaltyTB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.FromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.Todate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.penaltyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Penalty.agency)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index1 = 1;
+        }
+
+        @if (Model.PenaltyList.Count > 0)
+        {
+            @foreach (var item in Model.PenaltyList)
+            {
+                <tr>
+                    <td>@index1</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FromDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Todate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Remark)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.penaltyType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                    </td>
+
+                </tr>
+                index1++;
+            }
+        }
+        else{
+            <tr><td colspan="8" style="text-align:center">There is no data.</td></tr>
+        }
+
+      
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Dept_Labour_Immi/FileContentIndex
+/Dept_Labour_Immi/bin/Debug/net6.0
+/Dept_Labour_Immi/obj

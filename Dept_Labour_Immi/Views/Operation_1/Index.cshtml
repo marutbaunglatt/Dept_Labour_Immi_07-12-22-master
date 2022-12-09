@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.Operation_1>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Demand</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+<table id="operTB" class="display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apply_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Document_Complete_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.agency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thaiCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dOE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOEDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaleWorkers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FemaleWorkers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalWorkers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.Id" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.Apply_Date)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Document_Complete_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.thaiCompany.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dOE.DOE_NO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOEDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaleWorkers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FemaleWorkers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalWorkers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="customButton fa fa-edit"></a>
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+
+<style media="all" type="text/css">
+    #operTB td {
+        padding: 2px 0px 2px 15px;
+        align-items: center;
+    }
+</style>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#operTB").DataTable({
+                scrollX: true,
+            });
+        })
+    </script>
+}

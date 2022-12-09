@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.ServiceforThaiWorker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Service for Thai Worker</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+<table class="table" id="SFTW_TB">
+    <thead>
+        <tr>
+            <th>Sr_No</th>
+            <th>
+                @Html.DisplayNameFor(model => model.PinkCardServiceCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CICardServiceCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody >
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+                     <tr >
+                        <td class="aherf_link">
+                            <a asp-action="Details" asp-route-id="@item.ID" style="color:blue ; font-weight:bold">
+                            @index
+                            </a>
+                        </td>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.PinkCardServiceCount)
+                        </td>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.CICardServiceCount)
+                        </td>
+                        <td >
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="customButton fa fa-edit"> </a>                     
+                        </td>
+                    </tr>
+            index++;
+        }
+    </tbody>
+</table>
+
+<style media="all" type="text/css">
+    #SFTW_TB td {
+        padding: 2px 0px 2px 15px;
+        align-items:center;
+    }
+</style>
+@section scripts{
+            <script>
+
+                $(document).ready(function () {
+                $("#SFTW_TB").DataTable({
+                    "aoColumns": [ { sClass: "classDataTable" }]
+                });
+                })
+            </script>
+}

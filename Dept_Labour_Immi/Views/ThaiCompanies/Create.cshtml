@@ -1,0 +1,65 @@
+﻿@model Dept_Labour_Immi.Models.ThaiCompany
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>အသစ်ထည့်သွင်းခြင်း</h2>
+
+<h4>ThaiCompany</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label"></label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgencyID" class="control-label"></label>
+                <select asp-for="AgencyID" class ="form-control" asp-items="ViewBag.AgencyID">
+                    <option selected>--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyType" class="control-label"></label>
+                <select asp-for="CompanyType" class="form-control">
+                    <option value="">--</option>
+                    <option value="Company">Company</option>
+                    <option value="Agency">Agency</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner" class="control-label"></label>
+                <input asp-for="Owner" class="form-control" />
+                <span asp-validation-for="Owner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnerCode" class="control-label"></label>
+                <input asp-for="OwnerCode" class="form-control" />
+                <span asp-validation-for="OwnerCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="myButton" />
+                <a asp-action="Index" class="myButton">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+<div>
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    <div class="alert alert-<strong>Error!</strong> danger" style="color:red ; font-weight:bold">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}

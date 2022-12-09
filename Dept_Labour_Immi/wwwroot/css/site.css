@@ -1,0 +1,76 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.myButton {
+    box-shadow: 1px -1px 0px 1px #9fb4f2;
+    background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+    background-color: #7892c2;
+    border-radius: 4px;
+    border-width : 0px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 5px 24px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #283966;
+}
+
+    .myButton:hover {
+        background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+        background-color: #4aa9de;
+        color: cornsilk;
+        font-weight: bold;
+    }
+
+    .myButton:active {
+        position: relative;
+        top: 1px;
+        color:red;
+        font-weight:bold;
+    }
+
+.logo_img {
+    border-radius: 50%;
+}
+
+.customButton {
+    border: none;
+    border-radius: 4px;
+    padding: 7px 17px 7px 17px;
+    margin: 0px 13px 0px 12px;
+    background-color: darkcyan;
+    color: navajowhite;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: 1.8s;
+}
+
+    .customButton:hover {
+        cursor: pointer;
+        background-color: #84D2F9;
+        opacity: 0.9;
+        transition: 1.7s;
+        color: #000000;
+    }
+
+.indexTd{
+    margin-left :450px;
+}

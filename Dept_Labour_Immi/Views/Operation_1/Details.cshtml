@@ -1,0 +1,84 @@
+﻿@model Dept_Labour_Immi.Models.Operation_1
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>အသေးစိတ်</h1>
+
+<div>
+    <h4>Demand</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Apply_Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Apply_Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Document_Complete_Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Document_Complete_Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.agency)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.agency.AgencyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.thaiCompany)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.thaiCompany.CompanyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.dOE)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.dOE.DOE_NO)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.DOEDate)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.DOEDate)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.MaleWorkers)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.MaleWorkers)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.FemaleWorkers)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.FemaleWorkers)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.TotalWorkers)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.TotalWorkers)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+    </dl>
+</div>
+<div>
+   @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |*@
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Dept_Labour_Immi.Models.Agency>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>အချက်အလက်များ</h2>
+
+<p>
+    <a asp-action="Create" class="myButton">အသစ်ထည့်သွင်းခြင်း</a>
+</p>
+<table class="table" id="agencyTB">
+    <thead>
+        <tr>
+            <th>Sr_No</th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOD_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.AgencyName)
+            </td>*@
+                <td class="aherf_link">
+                    <a asp-action="Details" asp-route-id="@item.Id" style="color:blue">
+                        @Html.DisplayFor(modelItem => item.AgencyName)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseEndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BODName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="customButton fa fa-edit"></a>
+                    @* |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#agencyTB").DataTable();
+        })
+
+    </script>
+}

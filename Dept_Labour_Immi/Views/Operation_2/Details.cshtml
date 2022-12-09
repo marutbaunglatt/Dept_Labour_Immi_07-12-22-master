@@ -1,0 +1,138 @@
+﻿@model Dept_Labour_Immi.Models.Operation_2
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>အသေးစိတ်</h1>
+
+<div>
+    <h4>EC</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.DOEID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.dOE.DOE_NO)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Apply_Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Apply_Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Contract_Request_Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Contract_Request_Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.AgencyID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.agency.AgencyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.ThaiCompanyID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.thaiCompany.CompanyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Request_Male_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Request_Male_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Request_Female_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Request_Female_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Request_Total_Workers)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Request_Total_Workers)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Contract_Granted_Date)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Contract_Granted_Date)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Permit_Male_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Permit_Male_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Permit_Female_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Permit_Female_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Permit_Total_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Permit_Total_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Actual_Contract_Male_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Actual_Contract_Male_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Actual_Contract_Female_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Actual_Contract_Female_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Actual_Contract_Total_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Actual_Contract_Total_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Remain_Male_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Remain_Male_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Remain_Female_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Remain_Female_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Remain_Total_Worker)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Remain_Total_Worker)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+    </dl>
+</div>
+<div>
+   @* <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |*@
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>

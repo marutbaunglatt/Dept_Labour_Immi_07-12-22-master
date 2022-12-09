@@ -1,0 +1,22 @@
+﻿@model Dept_Labour_Immi.Models.Country
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>အသေးစိတ်</h2>
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+  <a asp-action="Index" class="myButton">Back to List</a>
+</div>

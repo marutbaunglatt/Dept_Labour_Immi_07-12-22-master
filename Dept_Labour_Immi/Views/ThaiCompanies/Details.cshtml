@@ -1,0 +1,128 @@
+﻿@model Dept_Labour_Immi.Models.ThaiCompany
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>အသေးစိတ်</h2>
+
+<div>
+    <h4>ThaiCompany</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.AgencyID)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.agency.AgencyName)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.CompanyType)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.CompanyType)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+        <dt class="col-sm-2 mt-1 p-1">
+            @Html.DisplayNameFor(model => model.OwnerCode)
+        </dt>
+        <dd class="col-sm-10 mt-1 p-1">
+            @Html.DisplayFor(model => model.OwnerCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |*@
+    <a asp-action="Index" class="myButton">Back to List</a>
+</div>
+<br />
+<h2>BlackLists</h2>
+<table class="table" id="BlackListTB">
+    <thead>
+        <tr>
+            <th>စဥ်</th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.FromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.Todate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.penaltyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.agency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blacklist.thaiCompany)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index1 = 1;
+        }
+
+        @if (Model.blacklists.Count > 0)
+        {
+            @foreach (var item in Model.blacklists)
+            {
+                <tr>
+                    <td>@index1</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FromDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Todate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Remark)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.penaltyType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.agency.AgencyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.thaiCompany.CompanyName)
+                    </td>
+                </tr>
+                index1++;
+            }
+        }
+        else
+        {
+            <tr><td colspan="10" style="text-align:center">There is no data.</td></tr>
+        }
+
+
+    </tbody>
+</table>

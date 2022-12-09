@@ -1,0 +1,166 @@
+﻿@model Dept_Labour_Immi.Models.Operation_2
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>ပြင်ဆင်ခြင်း</h2>
+
+<h4>EC</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" id="ECForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DOEID" class="control-label"></label>
+                <select asp-for="DOEID" class="form-control" onchange="getOperation1(this.value)" disabled>
+                    <option value="">--</option>
+                    @if(Model.dOE != null)
+                    {
+                        <option value="@Model.dOE.ID">@Model.dOE.DOE_NO</option>
+                    }
+                </select>
+                <span asp-validation-for="DOEID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apply_Date" class="control-label"></label>
+                <input asp-for="Apply_Date" class="form-control" disabled/>
+                <span asp-validation-for="Apply_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contract_Request_Date" class="control-label"></label>
+                <input asp-for="Contract_Request_Date" class="form-control" disabled/>
+                <span asp-validation-for="Contract_Request_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgencyID" class="control-label"></label>
+                <select asp-for="AgencyID" class="form-control" disabled>
+                    <option value="">--</option>
+                    @if (Model.agency != null)
+                    {
+                        <option value="@Model.agency.Id">@Model.agency.AgencyName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThaiCompanyID" class="control-label"></label>
+                <select asp-for="ThaiCompanyID" class="form-control" disabled>
+                    <option value="">--</option>
+                    @if (Model.thaiCompany != null)
+                    {
+                        <option value="@Model.thaiCompany.ID">@Model.thaiCompany.CompanyName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkType" class="control-label"></label>
+                <input asp-for="WorkType" class="form-control" disabled />
+                <span asp-validation-for="WorkType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request_Male_Worker" class="control-label"></label>
+                <input asp-for="Request_Male_Worker" class="form-control" />
+                <span asp-validation-for="Request_Male_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request_Female_Worker" class="control-label"></label>
+                <input asp-for="Request_Female_Worker" class="form-control" />
+                <span asp-validation-for="Request_Female_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request_Total_Workers" class="control-label"></label>
+                <input asp-for="Request_Total_Workers" class="form-control" />
+                <span asp-validation-for="Request_Total_Workers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contract_Granted_Date" class="control-label"></label>
+                <input asp-for="Contract_Granted_Date" class="form-control" />
+                <span asp-validation-for="Contract_Granted_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Permit_Male_Worker" class="control-label"></label>
+                <input asp-for="Permit_Male_Worker" class="form-control" disabled/>
+                <span asp-validation-for="Permit_Male_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Permit_Female_Worker" class="control-label"></label>
+                <input asp-for="Permit_Female_Worker" class="form-control" disabled/>
+                <span asp-validation-for="Permit_Female_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Permit_Total_Worker" class="control-label"></label>
+                <input asp-for="Permit_Total_Worker" class="form-control" disabled/>
+                <span asp-validation-for="Permit_Total_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Actual_Contract_Male_Worker" class="control-label"></label>
+                <input asp-for="Actual_Contract_Male_Worker" class="form-control" onchange="changeRMaleWorker(this.value)" />
+                <span asp-validation-for="Actual_Contract_Male_Worker" class="text-danger"></span>
+                <span id="acmWorker" class="text-danger label" style="font-size:12px;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Actual_Contract_Female_Worker" class="control-label"></label>
+                <input asp-for="Actual_Contract_Female_Worker" class="form-control" onchange="changeRFemaleWorker(this.value)" />
+                <span asp-validation-for="Actual_Contract_Female_Worker" class="text-danger"></span>
+                <span id="acfWorker" class="text-danger label" style="font-size:12px;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Actual_Contract_Total_Worker" class="control-label"></label>
+                <input asp-for="Actual_Contract_Total_Worker" class="form-control" disabled/>
+                <span asp-validation-for="Actual_Contract_Total_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remain_Male_Worker" class="control-label"></label>
+                <input asp-for="Remain_Male_Worker" class="form-control" disabled />
+                <span asp-validation-for="Remain_Male_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remain_Female_Worker" class="control-label"></label>
+                <input asp-for="Remain_Female_Worker" class="form-control" disabled />
+                <span asp-validation-for="Remain_Female_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remain_Total_Worker" class="control-label"></label>
+                <input asp-for="Remain_Total_Worker" class="form-control" disabled />
+                <span asp-validation-for="Remain_Total_Worker" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remark" class="control-label"></label>
+                <textarea type="text" asp-for="Remark" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Remark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<input type="submit" value="Save" class="myButton" />*@
+                @{
+                    var dis = false;
+                    var cur = "cursor: allowed";
+                }
+                @if (!ViewBag.operation){
+                    dis = true;
+                    cur = "cursor: not-allowed";
+                }
+                <input type="button" value="Save" class="myButton" id="updateEC" disabled=@dis style="@cur"/>
+                <a asp-action="Index" class="myButton">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/Operation_2/EC.js"></script>
+}
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+{
+    <div class="alert alert-<strong>Error!</strong> danger" style="color:red ; font-weight:bold">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}

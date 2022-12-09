@@ -1,0 +1,107 @@
+﻿@model Dept_Labour_Immi.Models.User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var AlreadyHave = ViewBag.AlreadyHave as string;
+}
+
+
+<h1 class="text-primary text-center">Edit User</h1>
+
+<form class="container" style="margin:auto; width:70%;" asp-action="Edit">
+@*    <div class="row g-0">
+        <div class="col-1">
+            <div class="form-floating my-3">
+                <label id="roleType">Role Type</label>
+            </div>
+        </div>
+        <div class="col-11">
+            <div class="form-floating my-3">
+                <input id="username" class="form-control" asp-for="UserName" placeholder="Enter user name" />
+                <label asp-for="UserName">User Name</label>
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="form-floating my-3">
+        <select class="form-select mb-1" asp-for="Role" onchange="AdminType()" id="selectRole">
+            <option value="" selected>Select Your Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Officer">Officer</option>
+            <option value="Entry">Entry</option>
+        </select>
+        <label asp-for="Role"></label>
+        <span class="text-danger" asp-validation-for="Role"></span>
+    </div>
+
+    <div class="input-group my-3">
+        <span class="input-group-text" id="roleType">Role Type</span>
+        <input id="username" type="text" asp-for="UserName" class="form-control" placeholder="Enter Username">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating my-3">
+        <input type="password" class="form-control" asp-for="Password" placeholder="Enter password" autocomplete="off" />
+        <label asp-for="Password">Password</label>
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <div class="form-floating my-3">
+        <input type="password" class="form-control" asp-for="ComfirmPassword" placeholder="Retype your password" autocomplete="off" />
+        <label asp-for="ComfirmPassword">Comfirm Your Password</label>
+        <span class="text-danger" asp-validation-for="ComfirmPassword"></span>
+    </div>
+   
+
+    <input type="submit" class="btn btn-primary" value="@ViewBag.btnName" onclick="MakeFullName()" />
+    <a class="btn btn-success" asp-action="Index">Back To List</a>
+</form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_validationscriptspartial");
+    }
+}
+
+<script>
+    window.onload = spriteUserName();
+
+
+    function AdminType() {
+         var text = $("#selectRole :selected").text();
+        if (text == 'Admin') {
+            var adminCount = @ViewBag.AdminCount;
+            adminCount++;
+            text += '_' + adminCount;
+        }
+        else if (text == 'Officer') {
+            var officerCount = @ViewBag.OfficerCount;
+            officerCount++;
+            text += '_' + officerCount;
+        }
+        else if (text == 'Entry') {
+            var entryCount = @ViewBag.EntryCount;
+            entryCount++;
+            text += '_' + entryCount
+        }
+        //alert(text)
+        document.getElementById("roleType").innerHTML = text;
+    }
+
+    function MakeFullName() {
+        document.getElementById("username").value = document.getElementById("roleType").innerHTML + "" + document.getElementById("username").value
+    }
+
+    function spriteUserName() {
+        var userName = document.getElementById("username").value;
+        var whereId = userName.indexOf("_");
+        var typeOfUser = userName.substring(0, whereId + 2);
+       // alert(typeOfUser);
+        document.getElementById("roleType").innerHTML = typeOfUser;
+
+        var fullName = userName.substring(whereId+2);
+       // alert(fullName)
+        document.getElementById("username").value = fullName;
+    }
+</script>
